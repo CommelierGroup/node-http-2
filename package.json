@@ -1,0 +1,11 @@
+{
+  "name": "http-2",
+  "version": "1.0.0",
+  "description": "Implementing an HTTP/2 Server with Node.js",
+  "scripts": {
+    "start": "node src/app.js"
+  },
+  "keywords": [],
+  "author": "Je-Hwan Yoo",
+  "license": "MIT"
+}
