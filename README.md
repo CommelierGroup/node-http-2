@@ -27,3 +27,5 @@ npm run start
 ## 크롬 개발자도구 네트워크 탭에서 프로토콜 활성화
 
 ![Screenshot 2024-03-12 at 17 16 32](https://github.com/JeHwanYoo/node-http-2/assets/13535954/b0b6c286-2dff-44d7-884e-ef4bd08b708c)
+
+![Screenshot 2024-03-12 at 17 15 31](https://github.com/JeHwanYoo/node-http-2/assets/13535954/3384f681-4e40-49a1-b6c0-ba8ad873c21a)
