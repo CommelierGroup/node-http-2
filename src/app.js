@@ -16,19 +16,33 @@ server.on('error', err => console.error(err))
 server.on('stream', (stream, headers) => {
   // 스트림은 요청과 응답을 다루는 객체입니다.
   // 클라이언트로부터 요청 경로를 가져옵니다.
-  const path = headers[':path']
+  const pathValue = headers[':path']
 
-  // 간단한 응답 메시지
-  const responseBody = `Hello, HTTP/2 world! Requested path: ${path}`
+  if (pathValue === '/') {
+    // 간단한 응답 메시지
+    const responseBody = `Hello, HTTP/2 world! Requested path: ${pathValue}`
 
-  // 응답 헤더 설정
-  stream.respond({
-    'content-type': 'text/plain; charset=utf-8',
-    ':status': 200,
-  })
+    // 응답 헤더 설정
+    stream.respond({
+      'content-type': 'text/plain; charset=utf-8',
+      ':status': 200,
+    })
 
-  // 응답 본문 보내기
-  stream.end(responseBody)
+    // 응답 본문 보내기
+    stream.end(responseBody)
+  } else if (pathValue === '/html') {
+    stream.respondWithFile(path.join(import.meta.dirname, 'index.html'), {
+      'content-type': 'text/html; charset=utf-8',
+    })
+  } else {
+    // 404 처리
+    stream.respond({
+      'content-type': 'text/plain; charset=utf-8',
+      ':status': 404,
+    })
+
+    stream.end('404 NOT FOUND')
+  }
 })
 
 // 서버가 8443 포트에서 수신하도록 설정
